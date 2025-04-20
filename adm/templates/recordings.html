@@ -1,0 +1,35 @@
+{{define "title"}}Audio Debug Mode - Recordings{{end}}
+
+{{define "body"}}
+<h2>Recordings</h2>
+<div class="recordings">
+{{ range .Recordings }}
+    <div class="recording" style="border-bottom: 1px solid #ccc; padding: 10px;">
+        <table style="width: 100%;">
+            <tr>
+                <td style="width: 180px; font-weight: bold; font-size: larger; vertical-align: middle;">{{.RelativeTime}} ago</td>
+                <td>
+                    <audio controls style="width: 100%;">
+                        <source src="{{.URL}}" type="audio/wav">
+                    </audio>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p class="language" style="font-weight: bold; margin: 0;">Language: {{.Language}}</p>
+                    <p class="transcript" style="margin: 0; border-left: 4px solid #ccc; padding-left: 10px;">{{.Transcript}}</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+{{ end }}
+</div>
+<div class="information" style="text-align: center;">
+    <p>Recordings are only created while Audio Debug Mode is enabled, and are deleted after 24 hours.</p>
+    <p>
+        Audio Debug Mode will also be automatically disabled 24 hours after it is turned on, after which no more
+        recordings will be created.
+    </p>
+    <p>You can toggle Audio Debug Mode on <a href="https://auth.rebble.io/account/">your account page</a>.</p>
+</div>
+{{end}}
